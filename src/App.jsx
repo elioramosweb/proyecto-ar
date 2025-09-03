@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import { ARCanvas, DefaultXRControllers, createXRStore } from '@react-three/xr';
+import { XR, DefaultXRControllers, createXRStore } from '@react-three/xr';
 import './App.css';
 
 function Cube() {
@@ -24,18 +24,20 @@ function App() {
       <button onClick={handleEnterAR} style={{ margin: 20, padding: 10, fontSize: 18 }}>
         Entrar en modo AR
       </button>
-      <ARCanvas camera={{ position: [0, 0, 4], fov: 50 }} shadows style={{ width: '100vw', height: '100vh' }} store={xrStore}>
-        <ambientLight intensity={0.3} />
-        <directionalLight
-          position={[5, 5, 5]}
-          intensity={1}
-          castShadow
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
-        />
-        <Cube />
-        <DefaultXRControllers />
-      </ARCanvas>
+      <XR store={xrStore}>
+        <Canvas camera={{ position: [0, 0, 4], fov: 50 }} shadows style={{ width: '100vw', height: '100vh' }}>
+          <ambientLight intensity={0.3} />
+          <directionalLight
+            position={[5, 5, 5]}
+            intensity={1}
+            castShadow
+            shadow-mapSize-width={1024}
+            shadow-mapSize-height={1024}
+          />
+          <Cube />
+          <DefaultXRControllers />
+        </Canvas>
+      </XR>
     </div>
   );
 }
