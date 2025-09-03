@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import { XR, DefaultXRControllers, createXRStore } from '@react-three/xr';
+import { XR, createXRStore } from '@react-three/xr';
 import './App.css';
 
 function Cube() {
@@ -35,7 +35,6 @@ function App() {
             shadow-mapSize-height={1024}
           />
           <Cube />
-          <DefaultXRControllers />
         </Canvas>
       </XR>
     </div>
